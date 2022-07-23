@@ -1,2 +1,2 @@
 # re
-c++
+infinity console snake on c++
