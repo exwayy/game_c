@@ -1,15 +1,15 @@
 #include <iostream>
 #include <conio.h>
 #include <Windows.h>
-bool gameOver;
-const int width = 20;
-const int height = 20;
-int x, y, fruitX, fruitY;
-int score;
+bool gameOver; 
+const int width = 20; //width of gamezone
+const int height = 20; //height if gamezone 
+int x, y, fruitX, fruitY; // coordinates of our snake and fruits
+int score; // our score
 enum eDirection { STOP = 0, LEFT, RIGHT, UP, DOWN};
 eDirection dir;
 
-void setup() {
+void setup() { //setup start values
 	gameOver = false;
 	dir = STOP;
 	x = width / 2 - 1;
@@ -20,7 +20,7 @@ void setup() {
 }
 
 void draw() {
-	system("cls");
+	system("cls"); //if you use linux, change "cls" -> "clear"
 	for (int i = 0; i < width + 1; i++) {
 		std::cout << "#";
 	}std::cout << std::endl;
@@ -45,7 +45,7 @@ void draw() {
 
 }
 
-void input() {
+void input() { // here we use conio.h to get our button presses
 	if (_kbhit()) {
 		switch (_getch()) {
 		case 'a':
@@ -67,8 +67,8 @@ void input() {
 	}
 }
 
-void logic() {
-	switch (dir)
+void logic() { 
+	switch (dir)// here we change position of the snake
 	{
 	case LEFT:
 		x--;
@@ -82,7 +82,7 @@ void logic() {
 	case DOWN:
 		y++;
 		break;
-	}
+	}// here we check position of the snake сonsidering death by walls
 	if (x >width-2 || x < 0 || y<0 || y>height-1) gameOver = true;
 	if (x == fruitX && y == fruitY) {
 		score++;
@@ -94,7 +94,7 @@ void logic() {
 int main() {
 	setup();
 	while (!gameOver) {
-		Sleep(200);
+		Sleep(200); //change if too slow
 		draw();
 		input();
 		logic();
