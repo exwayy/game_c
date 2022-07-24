@@ -3,7 +3,7 @@
 #include <Windows.h>
 bool gameOver; 
 const int width = 20; //width of gamezone
-const int height = 20; //height if gamezone 
+const int height = 20; //height of gamezone 
 int x, y, fruitX, fruitY; // coordinates of our snake and fruits
 int score; // our score
 enum eDirection { STOP = 0, LEFT, RIGHT, UP, DOWN};
